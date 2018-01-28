@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import { test, assertSort, randomArray } from './test';
 
-class Heap {
+export default class Heap {
   static sort(arr: number[]): number[] {
     return new Heap(arr).sort();
   }
@@ -57,8 +57,6 @@ class Heap {
     return this.arr;
   }
 }
-
-module.exports = Heap;
 
 if (require.main === module) {
   test('heapSort', () => {

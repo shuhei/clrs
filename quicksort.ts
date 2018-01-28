@@ -21,7 +21,7 @@ function partition(arr: number[], p: number, r: number): number | null {
   return i;
 }
 
-function quicksort(arr: number[]): number[] {
+export default function quicksort(arr: number[]): number[] {
   let parts = [[0, arr.length - 1]];
   while (parts.length) {
     const next = [];

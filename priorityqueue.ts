@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import { test, assertSort, randomArray } from './test';
 
-class PriorityQueue {
+export default class PriorityQueue {
   constructor(private arr: number[]) {
     this.arr = arr;
     const half = Math.floor(arr.length / 2);
@@ -82,8 +82,6 @@ class PriorityQueue {
     return this.arr.length;
   }
 }
-
-module.exports = PriorityQueue;
 
 if (require.main === module) {
   test('PriorityQueue - extractMax', () => {

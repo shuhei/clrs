@@ -40,7 +40,7 @@ function buildMaxHeap(arr: number[]): number[] {
   return arr;
 }
 
-function heapSort(arr: number[]): number[] {
+export default function heapSort(arr: number[]): number[] {
   buildMaxHeap(arr);
   let heapLength = arr.length;
   for (let i = arr.length - 1; i > 0; i--) {
@@ -50,8 +50,6 @@ function heapSort(arr: number[]): number[] {
   }
   return arr;
 }
-
-module.exports = heapSort;
 
 if (require.main === module) {
   test('leftChildIndex', () => {
