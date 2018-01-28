@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "./scripts/ts",
+    "start": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Shuhei Kagawa <shuhei.kagawa@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^9.4.0",
+    "typescript": "^2.6.2"
+  }
 }
