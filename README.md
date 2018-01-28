@@ -1,6 +1,8 @@
-# Introduction to Algorithms
+# CLRS
 
-## Install
+My humble implementations of algorithms in [Introduction to Algorithms](https://mitpress.mit.edu/books/introduction-algorithms) a.k.a. CLRS.
+
+## Set up
 
 ```sh
 npm install
