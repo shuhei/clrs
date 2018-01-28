@@ -10,6 +10,14 @@ npm install
 
 ## Run
 
+Run all tests:
+
+```sh
+npm test
+```
+
+## Develop
+
 Watch and compile TypeScript files:
 
 ```sh

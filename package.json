@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "tsc --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tsc && for file in ./build/*.js; do node $file; done"
   },
   "author": "Shuhei Kagawa <shuhei.kagawa@gmail.com>",
   "license": "ISC",
