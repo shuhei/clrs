@@ -1,12 +1,12 @@
-const { test, assertSort, randomArray } = require('./test');
+import { test, assertSort, randomArray } from './test';
 
-function swap(arr, i, j) {
+function swap(arr: number[], i: number, j: number): void {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
-function partition(arr, p, r) {
+function partition(arr: number[], p: number, r: number): number | null {
   if (r - p < 1) {
     return null;
   }
@@ -21,7 +21,7 @@ function partition(arr, p, r) {
   return i;
 }
 
-function quicksort(arr) {
+function quicksort(arr: number[]): number[] {
   let parts = [[0, arr.length - 1]];
   while (parts.length) {
     const next = [];
