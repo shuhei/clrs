@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-tsc && node build/$(basename "$1" .ts).js
