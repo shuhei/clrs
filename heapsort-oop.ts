@@ -67,7 +67,7 @@ if (require.main === module) {
     assertSort(Heap.sort, [3, 4, 0, 2, 1, 5]);
     assertSort(Heap.sort, [3, 3, 2, 1, 0, 2, 3]);
     for (let i = 0; i < 100; i++) {
-      assertSort(Heap.sort, randomArray(20));
+      assertSort(Heap.sort, randomArray(20, 20));
     }
   });
 }

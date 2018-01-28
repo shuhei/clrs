@@ -45,7 +45,7 @@ if (require.main === module) {
     assertSort(quicksort, [3, 0, 2, 5, 6]);
     assertSort(quicksort, [3, 4, 5, 0, 2, 1]);
     for (let i = 0; i < 100; i++) {
-      assertSort(quicksort, randomArray(20));
+      assertSort(quicksort, randomArray(20, 20));
     }
   });
 }

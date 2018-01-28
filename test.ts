@@ -19,7 +19,7 @@ export function assertSort(sortFn: (nums: number[]) => void, arr: number[]): voi
   assert.deepEqual(actual, expected, original.toString());
 }
 
-export function randomArray(size: number): number[] {
+export function randomArray(max: number, size: number): number[] {
   const arr = new Array(size);
   for (let i = 0; i < size; i++) {
     arr[i] = Math.floor(Math.random() * size);

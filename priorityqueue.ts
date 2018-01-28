@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { test, assertSort, randomArray } from './test';
+import { test, assertSort } from './test';
 
 export default class PriorityQueue {
   constructor(private arr: number[]) {

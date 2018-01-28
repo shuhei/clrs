@@ -85,7 +85,7 @@ if (require.main === module) {
     assertSort(heapSort, [3, 4, 0, 2, 1, 5]);
     assertSort(heapSort, [3, 3, 2, 1, 0, 2, 3]);
     for (let i = 0; i < 100; i++) {
-      assertSort(heapSort, randomArray(20));
+      assertSort(heapSort, randomArray(20, 20));
     }
   });
 }
