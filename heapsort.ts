@@ -1,21 +1,21 @@
-const assert = require('assert');
-const { test, assertSort, randomArray } = require('./test');
+import * as assert from 'assert';
+import { test, assertSort, randomArray } from './test';
 
-function leftChildIndex(i) {
+function leftChildIndex(i: number): number {
   return i * 2 + 1;
 }
 
-function rightChildIndex(i) {
+function rightChildIndex(i: number): number {
   return i * 2 + 2;
 }
 
-function swap(arr, i, j) {
+function swap(arr: number[], i: number, j: number): void {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
 }
 
-function maxHeapify(arr, heapLength, i) {
+function maxHeapify(arr: number[], heapLength: number, i: number): number[] {
   const leftIndex = leftChildIndex(i);
   const rightIndex = rightChildIndex(i);
   let largestIndex = i;
@@ -32,7 +32,7 @@ function maxHeapify(arr, heapLength, i) {
   return arr;
 }
 
-function buildMaxHeap(arr) {
+function buildMaxHeap(arr: number[]): number[] {
   const half = Math.floor(arr.length / 2);
   for (let i = half; i >= 0; i--) {
     maxHeapify(arr, arr.length, i);
@@ -40,7 +40,7 @@ function buildMaxHeap(arr) {
   return arr;
 }
 
-function heapSort(arr) {
+function heapSort(arr: number[]): number[] {
   buildMaxHeap(arr);
   let heapLength = arr.length;
   for (let i = arr.length - 1; i > 0; i--) {
@@ -87,7 +87,7 @@ if (require.main === module) {
     assertSort(heapSort, [3, 4, 0, 2, 1, 5]);
     assertSort(heapSort, [3, 3, 2, 1, 0, 2, 3]);
     for (let i = 0; i < 100; i++) {
-      assertSort(Heap.sort, randomArray(20));
+      assertSort(heapSort, randomArray(20));
     }
   });
 }

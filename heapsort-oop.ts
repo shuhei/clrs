@@ -1,12 +1,14 @@
-const assert = require('assert');
-const { test, assertSort, randomArray } = require('./test');
+import * as assert from 'assert';
+import { test, assertSort, randomArray } from './test';
 
 class Heap {
-  static sort(arr) {
+  static sort(arr: number[]): number[] {
     return new Heap(arr).sort();
   }
 
-  constructor(arr) {
+  size: number;
+
+  constructor(private arr: number[]) {
     this.arr = arr;
     this.size = arr.length;
 
@@ -16,21 +18,21 @@ class Heap {
     }
   }
 
-  leftChildIndex(i) {
+  leftChildIndex(i: number): number {
     return i * 2 + 1;
   }
 
-  rightChildIndex(i) {
+  rightChildIndex(i: number): number {
     return i * 2 + 2;
   }
 
-  swap(i, j) {
+  swap(i: number, j: number): void {
     const temp = this.arr[i];
     this.arr[i] = this.arr[j];
     this.arr[j] = temp;
   }
 
-  maxHeapify(i) {
+  maxHeapify(i: number): void {
     const leftIndex = this.leftChildIndex(i);
     const rightIndex = this.rightChildIndex(i);
     let largestIndex = i;
@@ -44,10 +46,9 @@ class Heap {
       this.swap(i, largestIndex);
       this.maxHeapify(largestIndex);
     }
-    return this.arr;
   }
 
-  sort() {
+  sort(): number[] {
     for (let i = this.arr.length - 1; i > 0; i--) {
       this.swap(0, i);
       this.size--;

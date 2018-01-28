@@ -1,6 +1,6 @@
-const assert = require('assert');
+import * as assert from 'assert';
 
-function test(name, fn) {
+export function test(name: string, fn: () => void): void {
   try {
     fn();
     console.log(`OK ${name}`);
@@ -12,23 +12,17 @@ function test(name, fn) {
   }
 }
 
-function assertSort(sortFn, arr) {
+export function assertSort(sortFn: (nums: number[]) => void, arr: number[]): void {
   const original = arr.slice();
   const expected = arr.slice().sort((a, b) => a - b);
   const actual = sortFn(arr);
-  assert.deepEqual(actual, expected, original);
+  assert.deepEqual(actual, expected, original.toString());
 }
 
-function randomArray(size) {
+export function randomArray(size: number): number[] {
   const arr = new Array(size);
   for (let i = 0; i < size; i++) {
     arr[i] = Math.floor(Math.random() * size);
   }
   return arr;
 }
-
-module.exports = {
-  test,
-  assertSort,
-  randomArray,
-};

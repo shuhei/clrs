@@ -1,12 +1,8 @@
-const assert = require('assert');
-const { test, assertSort, randomArray } = require('./test');
+import * as assert from 'assert';
+import { test, assertSort, randomArray } from './test';
 
 class PriorityQueue {
-  static sort(arr) {
-    return new PriorityQueue(arr).sort();
-  }
-
-  constructor(arr) {
+  constructor(private arr: number[]) {
     this.arr = arr;
     const half = Math.floor(arr.length / 2);
     for (let i = half; i >= 0; i--) {
@@ -14,25 +10,25 @@ class PriorityQueue {
     }
   }
 
-  parentIndex(i) {
+  parentIndex(i: number): number {
     return Math.floor((i + 1) / 2) - 1;
   }
 
-  leftChildIndex(i) {
+  leftChildIndex(i: number): number {
     return i * 2 + 1;
   }
 
-  rightChildIndex(i) {
+  rightChildIndex(i: number): number {
     return i * 2 + 2;
   }
 
-  swap(i, j) {
+  swap(i: number, j: number): void {
     const temp = this.arr[i];
     this.arr[i] = this.arr[j];
     this.arr[j] = temp;
   }
 
-  maxHeapify(i) {
+  maxHeapify(i: number): void {
     const leftIndex = this.leftChildIndex(i);
     const rightIndex = this.rightChildIndex(i);
     let largestIndex = i;
@@ -46,14 +42,13 @@ class PriorityQueue {
       this.swap(i, largestIndex);
       this.maxHeapify(largestIndex);
     }
-    return this.arr;
   }
 
-  maximum() {
+  maximum(): number {
     return this.arr[0];
   }
 
-  extractMax() {
+  extractMax(): number {
     if (this.arr.length === 0) {
       throw new Error('empty queue');
     }
@@ -65,7 +60,7 @@ class PriorityQueue {
   }
 
   // To decrease key, we can set the new key and call maxHeapify.
-  increaseKey(i, key) {
+  increaseKey(i: number, key: number): void {
     if (key < this.arr[i]) {
       throw new Error('smaller key');
     }
@@ -78,12 +73,12 @@ class PriorityQueue {
     }
   }
 
-  insert(key) {
+  insert(key: number): void {
     this.arr.push(-Infinity);
     this.increaseKey(this.arr.length - 1, key);
   }
 
-  size() {
+  size(): number {
     return this.arr.length;
   }
 }
@@ -105,7 +100,7 @@ if (require.main === module) {
   });
 }
 
-function extractAll(queue) {
+function extractAll(queue: PriorityQueue): number[] {
   const size = queue.size();
   const result = new Array(size);
   for (let i = 0; i < size; i++) {
