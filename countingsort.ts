@@ -1,5 +1,7 @@
 import { test, assertSort, randomArray } from './test';
 
+// In order to support radix sort, this function is compatible with arrays
+// that have satelite data.
 export default function countingSort<T>(
   getKey: (t: T) => number,
   max: number,
