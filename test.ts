@@ -12,7 +12,7 @@ export function test(name: string, fn: () => void): void {
   }
 }
 
-export function assertSort(sortFn: (nums: number[]) => void, arr: number[]): void {
+export function assertSort(sortFn: (nums: number[]) => number[], arr: number[]): void {
   const original = arr.slice();
   const expected = arr.slice().sort((a, b) => a - b);
   const actual = sortFn(arr);
@@ -22,7 +22,7 @@ export function assertSort(sortFn: (nums: number[]) => void, arr: number[]): voi
 export function randomArray(max: number, size: number): number[] {
   const arr = new Array(size);
   for (let i = 0; i < size; i++) {
-    arr[i] = Math.floor(Math.random() * size);
+    arr[i] = Math.floor(Math.random() * max);
   }
   return arr;
 }
