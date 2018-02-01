@@ -4,7 +4,6 @@ import { test, assertSort } from './test';
 class LinkedList<T> {
   constructor(
     public value: T,
-    public prev: LinkedList<T> | null,
     public next: LinkedList<T> | null,
   ) {}
 
@@ -13,13 +12,13 @@ class LinkedList<T> {
     while (node.next) {
       node = node.next;
     }
-    node.next = new LinkedList(value, node, null);
+    node.next = new LinkedList(value, null);
   }
 
   insert(value: T): void {
     const temp = this.value;
     this.value = value;
-    this.next = new LinkedList(temp, this, this.next);
+    this.next = new LinkedList(temp, this.next);
   }
 
   copy(arr: T[], start: number): number {
@@ -53,7 +52,7 @@ class SortedLinkedList extends LinkedList<number> {
     if (node.value >= value) {
       node.insert(value);
     } else {
-      node.next = new SortedLinkedList(value, node, null);
+      node.next = new SortedLinkedList(value, null);
     }
   }
 }
@@ -68,7 +67,7 @@ function bucketSort(arr: number[]): number[] {
       buckets[index].add(value);
     } else {
       // TODO: Should I use insertion sort?
-      buckets[index] = new SortedLinkedList(value, null, null);
+      buckets[index] = new SortedLinkedList(value, null);
     }
   }
   // Copy values in linked lists to an array
@@ -91,7 +90,7 @@ if (require.main === module) {
   });
 
   test('SortedLinkedList', () => {
-    const list = new SortedLinkedList(3, null, null);
+    const list = new SortedLinkedList(3, null);
     list.add(5);
     list.add(1);
     list.add(5);
