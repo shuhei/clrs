@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "tsc --watch",
-    "test": "tsc && for file in ./build/*.js; do node $file; done"
+    "test": "npm run clean && tsc && for file in ./build/*.js; do node $file; done",
+    "clean": "rm -rf ./build"
   },
   "author": "Shuhei Kagawa <shuhei.kagawa@gmail.com>",
   "license": "ISC",
