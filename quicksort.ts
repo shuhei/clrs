@@ -6,19 +6,23 @@ function swap(arr: number[], i: number, j: number): void {
   arr[j] = temp;
 }
 
-function partition(arr: number[], p: number, r: number): number | null {
+function randomizedPartition(arr: number[], p: number, r: number): number | null {
   if (r - p < 1) {
     return null;
   }
-  let i = p;
+
+  const pivot = p + Math.floor(Math.random() * (r - p));
+  swap(arr, pivot, r);
+
+  let i = p - 1;
   for (let j = p; j < r; j++) {
     if (arr[j] <= arr[r]) {
-      swap(arr, i, j);
       i++;
+      swap(arr, i, j);
     }
   }
-  swap(arr, i, r);
-  return i;
+  swap(arr, i + 1, r);
+  return i + 1;
 }
 
 export default function quicksort(arr: number[]): number[] {
@@ -27,10 +31,10 @@ export default function quicksort(arr: number[]): number[] {
     const next = [];
     for (let k = 0; k < parts.length; k++) {
       const [p, r] = parts[k];
-      const i = partition(arr, p, r);
-      if (typeof i === 'number') {
-        next.push([p, i - 1]);
-        next.push([i, r]);
+      const q = randomizedPartition(arr, p, r);
+      if (typeof q === 'number') {
+        next.push([p, q - 1]);
+        next.push([q + 1, r]);
       }
     }
     parts = next;
