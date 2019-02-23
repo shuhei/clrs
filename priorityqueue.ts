@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { test, assertSort } from './test';
+import * as assert from "assert";
+import { test, assertSort } from "./test";
 
 export default class PriorityQueue {
   constructor(private arr: number[]) {
@@ -32,10 +32,16 @@ export default class PriorityQueue {
     const leftIndex = this.leftChildIndex(i);
     const rightIndex = this.rightChildIndex(i);
     let largestIndex = i;
-    if (leftIndex < this.arr.length && this.arr[leftIndex] > this.arr[largestIndex]) {
+    if (
+      leftIndex < this.arr.length &&
+      this.arr[leftIndex] > this.arr[largestIndex]
+    ) {
       largestIndex = leftIndex;
     }
-    if (rightIndex < this.arr.length && this.arr[rightIndex] > this.arr[largestIndex]) {
+    if (
+      rightIndex < this.arr.length &&
+      this.arr[rightIndex] > this.arr[largestIndex]
+    ) {
       largestIndex = rightIndex;
     }
     if (largestIndex !== i) {
@@ -50,7 +56,7 @@ export default class PriorityQueue {
 
   extractMax(): number {
     if (this.arr.length === 0) {
-      throw new Error('empty queue');
+      throw new Error("empty queue");
     }
     const max = this.arr[0];
     this.swap(0, this.arr.length - 1);
@@ -62,7 +68,7 @@ export default class PriorityQueue {
   // To decrease key, we can set the new key and call maxHeapify.
   increaseKey(i: number, key: number): void {
     if (key < this.arr[i]) {
-      throw new Error('smaller key');
+      throw new Error("smaller key");
     }
     this.arr[i] = key;
     let node = i;
@@ -84,7 +90,7 @@ export default class PriorityQueue {
 }
 
 if (require.main === module) {
-  test('PriorityQueue - extractMax', () => {
+  test("PriorityQueue - extractMax", () => {
     const queue = new PriorityQueue([3, 2, 1, 5, 3, 10]);
     assert.equal(queue.maximum(), 10);
     assert.deepEqual(extractAll(queue), [10, 5, 3, 3, 2, 1]);

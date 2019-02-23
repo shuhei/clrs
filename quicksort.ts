@@ -1,4 +1,4 @@
-import { test, assertSort, randomArray } from './test';
+import { test, assertSort, randomArray } from "./test";
 
 function swap(arr: number[], i: number, j: number): void {
   const temp = arr[i];
@@ -6,7 +6,11 @@ function swap(arr: number[], i: number, j: number): void {
   arr[j] = temp;
 }
 
-function randomizedPartition(arr: number[], p: number, r: number): number | null {
+function randomizedPartition(
+  arr: number[],
+  p: number,
+  r: number
+): number | null {
   if (r - p < 1) {
     return null;
   }
@@ -32,7 +36,7 @@ export default function quicksort(arr: number[]): number[] {
     for (let k = 0; k < parts.length; k++) {
       const [p, r] = parts[k];
       const q = randomizedPartition(arr, p, r);
-      if (typeof q === 'number') {
+      if (typeof q === "number") {
         next.push([p, q - 1]);
         next.push([q + 1, r]);
       }
@@ -43,7 +47,7 @@ export default function quicksort(arr: number[]): number[] {
 }
 
 if (require.main === module) {
-  test('quicksort', () => {
+  test("quicksort", () => {
     assertSort(quicksort, []);
     assertSort(quicksort, [2, 0, 1]);
     assertSort(quicksort, [3, 0, 2, 5, 6]);

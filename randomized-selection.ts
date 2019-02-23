@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { test, randomArray } from './test';
+import * as assert from "assert";
+import { test, randomArray } from "./test";
 
 function swap<T>(arr: T[], i: number, j: number): void {
   const temp = arr[i];
@@ -7,7 +7,11 @@ function swap<T>(arr: T[], i: number, j: number): void {
   arr[j] = temp;
 }
 
-function randomizedPartition(arr: number[], p: number, r: number): number | null {
+function randomizedPartition(
+  arr: number[],
+  p: number,
+  r: number
+): number | null {
   const pivot = p + Math.floor(Math.random() * (r - p));
   swap(arr, pivot, r);
 
@@ -31,7 +35,7 @@ function randomizedSelection(index: number, arr: number[]): number | null {
   while (true) {
     const q = randomizedPartition(arr, p, r);
     if (q === null) {
-      console.log(`[${arr.join(',')}]`, p, q, r);
+      console.log(`[${arr.join(",")}]`, p, q, r);
       return null;
     } else if (q === index) {
       return arr[index];
@@ -44,7 +48,7 @@ function randomizedSelection(index: number, arr: number[]): number | null {
 }
 
 if (require.main === module) {
-  test('randomizedSelection', () => {
+  test("randomizedSelection", () => {
     assertSelection(randomizedSelection, 1, []);
     assertSelection(randomizedSelection, 1, [1]);
     assertSelection(randomizedSelection, 1, [3, 1, 2]);
@@ -58,7 +62,7 @@ if (require.main === module) {
 function assertSelection(
   fn: (index: number, arr: number[]) => number | null,
   index: number,
-  arr: number[],
+  arr: number[]
 ): void {
   const sorted = arr.slice().sort((a, b) => a - b);
   assert.equal(fn(index, arr), sorted[index]);

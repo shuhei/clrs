@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { test, assertSort, randomArray } from './test';
+import * as assert from "assert";
+import { test, assertSort, randomArray } from "./test";
 
 function leftChildIndex(i: number): number {
   return i * 2 + 1;
@@ -52,32 +52,40 @@ export default function heapSort(arr: number[]): number[] {
 }
 
 if (require.main === module) {
-  test('leftChildIndex', () => {
+  test("leftChildIndex", () => {
     assert.equal(leftChildIndex(0), 1);
     assert.equal(leftChildIndex(1), 3);
     assert.equal(leftChildIndex(2), 5);
   });
 
-  test('rightChildIndex', () => {
+  test("rightChildIndex", () => {
     assert.equal(rightChildIndex(0), 2);
     assert.equal(rightChildIndex(1), 4);
     assert.equal(rightChildIndex(2), 6);
   });
 
-  test('maxHeapify', () => {
+  test("maxHeapify", () => {
     assert.deepEqual(maxHeapify([1, 0, 2], 2, 0), [1, 0, 2]);
     assert.deepEqual(maxHeapify([0, 1, 2], 2, 0), [1, 0, 2]);
     assert.deepEqual(maxHeapify([0, 1, 2], 3, 0), [2, 1, 0]);
     assert.deepEqual(maxHeapify([2, 1, 0], 3, 0), [2, 1, 0]);
-    assert.deepEqual(maxHeapify([0, 4, 6, 1, 3, 2, 5], 7, 0), [6, 4, 5, 1, 3, 2, 0]);
+    assert.deepEqual(maxHeapify([0, 4, 6, 1, 3, 2, 5], 7, 0), [
+      6,
+      4,
+      5,
+      1,
+      3,
+      2,
+      0
+    ]);
   });
 
-  test('buildMaxHeap', () => {
+  test("buildMaxHeap", () => {
     assert.deepEqual(buildMaxHeap([0, 1, 2]), [2, 1, 0]);
     assert.deepEqual(buildMaxHeap([3, 4, 0, 1, 2]), [4, 3, 0, 1, 2]);
   });
 
-  test('heapSort', () => {
+  test("heapSort", () => {
     assertSort(heapSort, []);
     assertSort(heapSort, [0, 1]);
     assertSort(heapSort, [1, 0]);

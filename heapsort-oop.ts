@@ -1,5 +1,5 @@
-import * as assert from 'assert';
-import { test, assertSort, randomArray } from './test';
+import * as assert from "assert";
+import { test, assertSort, randomArray } from "./test";
 
 export default class Heap {
   static sort(arr: number[]): number[] {
@@ -39,7 +39,10 @@ export default class Heap {
     if (leftIndex < this.size && this.arr[leftIndex] > this.arr[largestIndex]) {
       largestIndex = leftIndex;
     }
-    if (rightIndex < this.size && this.arr[rightIndex] > this.arr[largestIndex]) {
+    if (
+      rightIndex < this.size &&
+      this.arr[rightIndex] > this.arr[largestIndex]
+    ) {
       largestIndex = rightIndex;
     }
     if (largestIndex !== i) {
@@ -59,7 +62,7 @@ export default class Heap {
 }
 
 if (require.main === module) {
-  test('heapSort', () => {
+  test("heapSort", () => {
     assertSort(Heap.sort, []);
     assertSort(Heap.sort, [0, 1]);
     assertSort(Heap.sort, [1, 0]);

@@ -1,11 +1,8 @@
-import * as assert from 'assert';
-import { test, assertSort } from './test';
+import * as assert from "assert";
+import { test, assertSort } from "./test";
 
 class LinkedList<T> {
-  constructor(
-    public value: T,
-    public next: LinkedList<T> | null,
-  ) {}
+  constructor(public value: T, public next: LinkedList<T> | null) {}
 
   add(value: T): void {
     let node: LinkedList<T> = this;
@@ -81,7 +78,7 @@ function bucketSort(arr: number[]): number[] {
 }
 
 if (require.main === module) {
-  test('bucketSort', () => {
+  test("bucketSort", () => {
     assertSort(bucketSort, []);
     assertSort(bucketSort, [0.8, 0.1, 0.6]);
     assertSort(bucketSort, [0.8, 0.15, 0.12]);
@@ -89,7 +86,7 @@ if (require.main === module) {
     assertSort(bucketSort, randomArray(100));
   });
 
-  test('SortedLinkedList', () => {
+  test("SortedLinkedList", () => {
     const list = new SortedLinkedList(3, null);
     list.add(5);
     list.add(1);

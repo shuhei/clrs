@@ -1,4 +1,4 @@
-import { test, assertSort, randomArray } from './test';
+import { test, assertSort, randomArray } from "./test";
 
 function insertionSort(arr: number[]): number[] {
   for (let j = 1; j < arr.length; j++) {
@@ -20,7 +20,7 @@ function insertionSort(arr: number[]): number[] {
 }
 
 if (require.main === module) {
-  test('insertionSort', () => {
+  test("insertionSort", () => {
     assertSort(insertionSort, []);
     assertSort(insertionSort, [1]);
     assertSort(insertionSort, [3, 1, 2]);

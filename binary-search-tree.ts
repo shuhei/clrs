@@ -1,13 +1,12 @@
-import * as assert from 'assert';
-import { test } from './test';
+import * as assert from "assert";
+import { test } from "./test";
 
 class Node {
   parent: Node | null;
   left: Node | null;
   right: Node | null;
 
-  constructor(public value: number) {
-  }
+  constructor(public value: number) {}
 }
 
 // TODO: Forbid duplicated values?
@@ -73,15 +72,15 @@ class BinarySearchTree {
 }
 
 if (require.main === module) {
-  test('BinarySearchTree', () => {
+  test("BinarySearchTree", () => {
     const tree = new BinarySearchTree();
     const nums = [3, 5, 4, 2, 1, 3, 12, -3];
-    nums.forEach((n) => {
+    nums.forEach(n => {
       tree.insert(n);
     });
     assert.equal(tree.min(), -3);
     assert.equal(tree.max(), 12);
-    nums.forEach((n) => {
+    nums.forEach(n => {
       tree.exists(n);
     });
     assert(!tree.exists(8));

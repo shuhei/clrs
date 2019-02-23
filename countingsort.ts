@@ -1,11 +1,11 @@
-import { test, assertSort, randomArray } from './test';
+import { test, assertSort, randomArray } from "./test";
 
 // In order to support radix sort, this function is compatible with arrays
 // that have satelite data.
 export default function countingSort<T>(
   getKey: (t: T) => number,
   max: number,
-  arr: T[],
+  arr: T[]
 ): T[] {
   const counts = new Array(max + 1);
   const result = new Array(arr.length);
@@ -32,7 +32,7 @@ export default function countingSort<T>(
 }
 
 if (require.main === module) {
-  test('countingSort', () => {
+  test("countingSort", () => {
     const id = (n: number) => n;
     const sort = (max: number) => (arr: number[]) => countingSort(id, max, arr);
 

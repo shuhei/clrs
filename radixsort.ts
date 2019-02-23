@@ -1,6 +1,6 @@
-import * as assert from 'assert';
-import { test, randomArray } from './test';
-import countingSort from './countingsort';
+import * as assert from "assert";
+import { test, randomArray } from "./test";
+import countingSort from "./countingsort";
 
 export default function radixSort(arr: number[][]): number[][] {
   if (arr.length === 0) {
@@ -17,10 +17,13 @@ export default function radixSort(arr: number[][]): number[][] {
 }
 
 if (require.main === module) {
-  test('radixSort', () => {
+  test("radixSort", () => {
     for (let i = 0; i < 100; i++) {
-      const arr = randomArray(1000, 20)
-        .map(n => pad('0', 3, n.toString()).split('').map(n => parseInt(n, 10)));
+      const arr = randomArray(1000, 20).map(n =>
+        pad("0", 3, n.toString())
+          .split("")
+          .map(n => parseInt(n, 10))
+      );
       assertSort(radixSort, arr);
     }
   });
@@ -34,9 +37,12 @@ function pad(char: string, n: number, str: string): string {
   return result;
 }
 
-function assertSort(sortFn: (nums: number[][]) => number[][], arr: number[][]): void {
-  const original = arr.map(ns => ns.join(''));
+function assertSort(
+  sortFn: (nums: number[][]) => number[][],
+  arr: number[][]
+): void {
+  const original = arr.map(ns => ns.join(""));
   const expected = original.slice().sort();
-  const actual = sortFn(arr).map(ns => ns.join(''));
+  const actual = sortFn(arr).map(ns => ns.join(""));
   assert.deepEqual(actual, expected, original.toString());
 }
